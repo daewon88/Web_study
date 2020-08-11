@@ -53,6 +53,7 @@
             await predict();
             window.requestAnimationFrame(loop);
         }
+
         var status = "stand"
         var count = 0
 
@@ -62,16 +63,17 @@
             const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
             // Prediction 2: run input through teachable machine classification model
             const prediction = await model.predict(posenetOutput);
-            if(prediction[0].probability.toFixed(2)>=0.9){
-                if(status=="squat"){
+            if(prediction[0].probability.toFixed(2) >= 0.90){
+                if(status == "squat"){
                     count++
-                    var audio = new Audio(count%10+".mp3");
+                    var audio = new Audio(count%10 + ".mp3");
                     audio.play();
                 }
-                status="stand"
-            }else if(prediction[1].probability.toFixed(2)>=0.9){
+                status = "stand"
+            }else if(prediction[1].probability.toFixed(2) >= 0.90){
                 status = "squat"
             }
+
             for (let i = 0; i < maxPredictions; i++) {
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
@@ -94,6 +96,6 @@
             }
         }
     </script>
-    <a href="paper.html">Why squat is good?</a>
+    <a href="paper.html">Why squat is good??</a>
 </body>
 </html>

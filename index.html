@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
+    <link rel="stylesheet" href="style.css">
     <title>squat</title>
 </head>
+
 <body>
-    <div>Teachable Machine Pose Model</div>
-    <button type="button" onclick="init()">Start</button>
-    <div><canvas id="canvas"></canvas></div>
-    <div id="label-container"></div>
+    <div class="container mt-5">
+        <div class="frame">
+            <div class="center">
+                <div class="headline">
+                    <div class="small">Squat</div>Counter
+                </div>
+                <div class="circle-big">
+                    <div class="text">
+                        0<div class="small">개</div>
+                    </div>
+                    <svg>
+                        <circle class="bg" cx="57" cy="57" r="52" />
+                        <circle class="progress" cx="57" cy="57" r="52" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <h1>Teachable Machine Pose Model</h1>
+        <div class = "paper"><a href="paper.html">Why squat is good??</a></div>
+        <button class="btn btn-info mt-4" type="button" onclick="init()">Start</button>
+        <div><canvas id="canvas"></canvas></div>
+        <div id="label-container"></div>
+        
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script type="text/javascript">
@@ -63,14 +89,14 @@
             const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
             // Prediction 2: run input through teachable machine classification model
             const prediction = await model.predict(posenetOutput);
-            if(prediction[0].probability.toFixed(2) >= 0.90){
-                if(status == "squat"){
+            if (prediction[0].probability.toFixed(2) >= 0.90) {
+                if (status == "squat") {
                     count++
-                    var audio = new Audio(count%10 + ".mp3");
+                    var audio = new Audio(count % 10 + ".mp3");
                     audio.play();
                 }
                 status = "stand"
-            }else if(prediction[1].probability.toFixed(2) >= 0.90){
+            } else if (prediction[1].probability.toFixed(2) >= 0.90) {
                 status = "squat"
             }
 
@@ -96,6 +122,6 @@
             }
         }
     </script>
-    <a href="paper.html">Why squat is good??</a>
 </body>
+
 </html>

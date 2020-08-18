@@ -76,8 +76,8 @@
     stroke-width: 10px;
     stroke: #27E1AE;
     stroke-linecap: round;
-stroke-dasharray: (52*2*3.14);
-    stroke-dashoffset: 60;
+    stroke-dasharray: 326.56;
+    stroke-dashoffset: 327;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
     animation: big 1.5s ease-out;
@@ -167,29 +167,3 @@ stroke-dasharray: (52*2*3.14);
 	
 
 
-@keyframes big {
-	from {
-		stroke-dashoffset: (52*2*3.14);
-	}
-	to {
-		stroke-dashoffset: 60;
-	}
-}
-
-@keyframes one {
-	from {
-		stroke-dashoffset: (37*2*3.14);
-	}
-	to {
-		stroke-dashoffset: 80;
-	}
-}
-
-@keyframes two {
-	from {
-		stroke-dashoffset: (37*2*3.14);
-	}
-	to {
-		stroke-dashoffset: 140;
-	}
-}

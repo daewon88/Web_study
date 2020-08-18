@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
     <link rel="stylesheet" href="style.css">
     <title>squat</title>
 </head>
@@ -20,7 +19,7 @@
                 </div>
                 <div class="circle-big">
                     <div class="text">
-                        0<div class="small">개</div>
+                        <span id="count">0</span><div class="small">개</div>
                     </div>
                     <svg>
                         <circle class="bg" cx="57" cy="57" r="52" />
@@ -92,6 +91,7 @@
             if (prediction[0].probability.toFixed(2) >= 0.90) {
                 if (status == "squat") {
                     count++
+                    document.getElementById("count").innerHTML = count;
                     var audio = new Audio(count % 10 + ".mp3");
                     audio.play();
                 }

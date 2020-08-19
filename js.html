@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="alert('진짜 경고')">
+        누르면 경고
+    </button>
+
+    <button onclick="document.write('바뀜!')">
+        글쓰기
+    </button>
+
+    <button onclick="a();">
+        함수로 구현
+    </button>
+
+
+    <input type="button" value="hi" onclick="alert('hi')">
+    <input type="text" onchange="alert('changed')">
+    <input type="text" onkeydown="alert('key down!')">
+
+    <h1 style='color:red' id='title'>이건 제목입니다.</h1>
+    <input type="button" value="hi" onclick="b();" >
+    <script>
+        function a(){
+            alert('진짜 경고2');
+        }
+
+        function b(){
+            document.querySelector("#title").innerHTML = '변경되었습니당'
+            document.getElementById('title').style.color = 'black';
+        }
+    </script>
+</body>
+
+</html>
